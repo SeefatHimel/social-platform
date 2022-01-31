@@ -1,4 +1,4 @@
-import { string, object, array, date, number } from "yup";
+import { string, object, array, date, number, boolean } from "yup";
 
 const loginSchema = object().shape({
     email: string()
@@ -11,6 +11,8 @@ const loginSchema = object().shape({
     password: string()
         .max(50, "This field must be at most 50 characters long")
         .required("This field must not be empty"),
+
+    rememberCheck: boolean().required("This field must not be empty."),
 });
 
 export default loginSchema;

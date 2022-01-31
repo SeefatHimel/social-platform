@@ -15,7 +15,7 @@ const signupSchema = object().shape({
         .required('This field must not be empty.'),
 
     sex: string()
-        .required('This field must not be empty.'),
+        .required('You must select one'),
 
     date_of_birth: date()
         .required('This field must not be empty.'),

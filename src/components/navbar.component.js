@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Link, Route, Routes, Switch } from "react-router-dom";
-// import SignUp from "./login -signup/signup.component";
 
 const Navbar = () => {
     return (
@@ -9,8 +8,8 @@ const Navbar = () => {
                 <div className="container-fluid">
                     <Link
                         style={{
-                            background: "yellow",
-                            color: "black",
+                            background: "blue",
+                            color: "white",
                             padding: "5px",
                             width: "fit-content",
                             borderRadius: "5px",
@@ -19,7 +18,7 @@ const Navbar = () => {
                         className="navbar-brand"
                         to="/"
                     >
-                        FB
+                        Facebook
                     </Link>
                     <Link className="navbar-brand" to="/logIn">
                         Log in
