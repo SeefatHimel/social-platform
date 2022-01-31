@@ -12,7 +12,7 @@ const loginSchema = object().shape({
         .max(50, "This field must be at most 50 characters long")
         .required("This field must not be empty"),
 
-    rememberCheck: boolean().required("This field must not be empty."),
+    rememberCheck: boolean(),
 });
 
 export default loginSchema;
