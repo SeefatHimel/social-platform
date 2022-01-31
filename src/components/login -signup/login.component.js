@@ -1,90 +1,63 @@
-import { Formik , Form } from "formik";
-import { useState } from "react";
-import Input from "../common/input.component";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import loginSchema from "../../schema/login.schema";
 
 const LogIn = (props) => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [errors, setErrors] = useState({});
-
-    const handleEmailChange = (event) => {
-        const value = event.target.value;
-        setEmail(value);
-    };
-    const handlePasswordChange = (event) => {
-        const value = event.target.value;
-        setPassword(value);
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (email === "admin" && password === "1234") {
-            props.history.Push("/");
-        } else {
-            // error
-            if (email === "") setErrors({ email: "Need email", password: "" });
-            if (password === "")
-                setErrors({ email: "", password: "Need password" });
-            else {
-                setErrors({ email: "", password: "wrong pass or email" });
-            }
-        }
-    };
-
     return (
         <>
             <Formik
                 initialValues={{ email: "", password: "" }}
+                validationSchema={loginSchema}
                 onSubmit={(values, actions) => {
                     console.log(values);
                     actions.setSubmitting(false);
                 }}
             >
-            {
-                (formikProps)=> (
-                    <Form onSubmit={formikProps.handleSubmit}>
+                {(formikProps) => (
+                    <Form onSubmit={formikProps.handleSubmit} className="px-4 py-3">
+                        <div className="form-group">
+                            <label
+                                className="form-label"
+                                htmlFor="exampleInputEmail1"
+                            >
+                                Email address{" "}
+                                <span className="text-danger">*</span>
+                            </label>
 
+                            <Field
+                                type="text"
+                                id="email"
+                                name="email"
+                                className="form-control"
+                            />
+                            <div className="invalid-feedback d-block">
+                                <ErrorMessage name="email" />
+                            </div>
+                        </div>
+                        <div className="form-group">
+                            <label
+                                className="form-label"
+                                htmlFor="exampleInputEmail1"
+                            >
+                                Password
+                                <span className="text-danger">*</span>
+                            </label>
+
+                            <Field
+                                type="text"
+                                id="password"
+                                name="password"
+                                className="form-control"
+                            />
+                            <div className="invalid-feedback d-block">
+                                <ErrorMessage name="password" />
+                            </div>
+                            <button type="submit" className="btn btn btn-primary">log in</button>
+                        </div>
                     </Form>
-                )
-            }
-
+                )}
             </Formik>
 
-            <form>
-                <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Email address</label>
-
-                    <Input
-                        type="text"
-                        id="email"
-                        value={email}
-                        handleChange={handleEmailChange}
-                        error={errors.email}
-                    />
-
-                    <small id="emailHelp" className="form-text text-muted">
-                        We'll never share your email with anyone else.
-                    </small>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="exampleInputPassword1">Password</label>
-                    <Input
-                        type="text"
-                        id="password"
-                        value={password}
-                        error={errors.password}
-                        handleChange={handlePasswordChange}
-                    />
-                </div>
-
-                <button
-                    onClick={handleSubmit}
-                    type="submit"
-                    className="btn btn-primary"
-                >
-                    Submit
-                </button>
-            </form>
+           
         </>
     );
 };
