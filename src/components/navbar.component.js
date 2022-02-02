@@ -1,5 +1,5 @@
 import React from "react";
-import {  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
@@ -22,24 +22,24 @@ const Navbar = () => {
                 >
                     Facebook
                 </Link>
-               
-                    <ul className="navbar-nav">
-                        <li className="nav-item active">
-                            <Link className="navbar-brand" to="/" style={{color : 'black'}}>
-                                Home
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="navbar-brand" to="/logIn">
-                                Log in
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="navbar-brand" to="/signUp">
-                                Sign up
-                            </Link>
-                        </li>
-                    </ul>
+
+                <Link
+                    className="navbar-brand"
+                    to="/"
+                    style={{ color: "black" }}
+                >
+                    Home
+                </Link>
+
+                <Link className="navbar-brand" to="/posts">
+                    Posts
+                </Link>
+                <Link className="navbar-brand" to="/logIn">
+                    Log in
+                </Link>
+                <Link className="navbar-brand" to="/signUp">
+                    Sign up
+                </Link>
             </nav>
         </>
     );
